@@ -1,0 +1,45 @@
+plugins {
+    id 'java'
+}
+
+group 'by.belhard'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.9.2'
+
+    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.9.2'
+
+    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.8.0'
+
+    // https://mvnrepository.com/artifact/io.github.qsy7.java.modules.browser.drivers/chromedriver
+    implementation group: 'io.github.qsy7.java.modules.browser.drivers', name: 'chromedriver', version: '0.1.2'
+
+    // https://mvnrepository.com/artifact/io.github.bonigarcia/selenium-jupiter
+    implementation group: 'io.github.bonigarcia', name: 'selenium-jupiter', version: '4.3.3'
+
+    // https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager
+    implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '5.3.2'
+    testImplementation 'org.projectlombok:lombok:1.18.22'
+
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+
+}
+
+println 'This is executed during the configuration phase.'
+
+test {
+    // Discover and execute JUnit Platform-based tests
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed", "standardOut", "standardError"
+    }
+}
