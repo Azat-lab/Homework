@@ -6,6 +6,7 @@
 package pageobjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -29,9 +30,7 @@ public class BasePage extends LoadableComponent<BasePage> {
         //link create new customer.
         protected By createNewCustomerLocator = By.xpath("//*[text()='New customers click here']");
         private final By loginTitle = By.id("box-account-login");
-
-
-        private By searchFieldLocator = By.xpath("//*[@name='query']");
+        private final By searchFieldLocator = By.xpath("//input[@name='query']");
 
         public WebElement searchField() {
                 return driver.findElement(searchFieldLocator);
@@ -44,6 +43,8 @@ public class BasePage extends LoadableComponent<BasePage> {
         public WebElement createCustomer(){
                 return driver.findElement(createNewCustomerLocator);
         }
+        //Declared common methods such as click, writeText
+
 
         public BasePage(WebDriver driver) {
                 this.driver = driver;
@@ -102,10 +103,15 @@ public class BasePage extends LoadableComponent<BasePage> {
                 return new CreateAccountPage();
         }
 
-        /*public CreateAccountPage submitCreateBtn(){
-                driver.findElement(createNewCustomerLocator).click();
+        public SecuredPage searchBox(String productValue){
+                driver.findElement(searchFieldLocator).sendKeys(productValue, Keys.ENTER);
+                return this.submitLogin();
+        }
 
-        }*/
+     /*public SecuredPage searchBox(String productValue){
+                driver.findElement(searchFieldLocator).sendKeys(productValue, Keys.ENTER);
+                return new SecuredPage();
+     }*/
 
         // Conceptually, the login page offers the user the service of being able to "log into"
         // the application using a username and password.

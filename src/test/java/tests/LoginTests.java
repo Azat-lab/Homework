@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
-import pageobjects.BasePage;
 
 import static utils.PropertiesManager.properties;
 
@@ -27,5 +26,7 @@ class LoginTests extends BaseTest {
     void loginPositiveTest() {
         securedPage = basePage.loginAs(email, password);
         Assertions.assertTrue(securedPage.accountTitle().isDisplayed());
+        String productValue = "Red Duck";
+        securedPage.searchProduct(productValue);
     }
 }

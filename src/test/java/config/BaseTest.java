@@ -14,7 +14,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pageobjects.BasePage;
 import pageobjects.CreateAccountPage;
-import pageobjects.ProductPage;
 import pageobjects.SecuredPage;
 
 import java.time.Duration;
@@ -29,7 +28,7 @@ public class BaseTest {
     public static BasePage basePage;
     public static SecuredPage securedPage;
     public static CreateAccountPage createAccountPage;
-    public static ProductPage productPage;
+    //public static ProductPage productPage;
 
     public BaseTest(WebDriver driver) {
         BaseTest.driver = (ChromeDriver) driver;

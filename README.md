@@ -75,7 +75,7 @@ Questions to discuss:
 2. 
 
 Next steps:
-1. Must overview of Bellhard Academy slides.
+1. Must overview of Belhard Academy slides.
 Additional tasks: Investigation of current up-to-date official manuals and tutors for Test Automation tools.
 
 2. Continue to finish homework assessments.

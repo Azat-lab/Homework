@@ -43,7 +43,6 @@ public class CreateAccountPage extends BasePage {
     public WebElement selectArrow(){
         return driver.findElement(selectArrowLocator);
     }
-
     public WebElement taxIdLocator(){
         return driver.findElement(inputTaxIdLocator);
     }

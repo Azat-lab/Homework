@@ -30,7 +30,7 @@ class CreateAccountTest extends BaseTest {
         String postcode = "445566";
         String city = "Minsk";
         String country = "Belarus";
-        String inputEmail = "taxi@gmail.com";
+        String inputEmail = "taxi1@gmail.com";
         String inputPhone = "+375252552525";
         String desiredPassword = "123456";
         String confirmPassword = "123456";

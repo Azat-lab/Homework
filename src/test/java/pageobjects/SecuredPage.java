@@ -5,14 +5,12 @@
  */
 package pageobjects;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.LoadableComponent;
 
 import static org.junit.jupiter.api.Assertions.fail;
+import static pageobjects.BasePage.actions;
 
 public class SecuredPage extends LoadableComponent<SecuredPage> {
 
@@ -20,9 +18,37 @@ public class SecuredPage extends LoadableComponent<SecuredPage> {
     private final LoadableComponent<?> parent;
     private final String username;
     private final String password;
-    public By accountTitle = By.id("box-account");
+    private final By accountTitle = By.id("box-account");
 
-    public By purpleDuck1 = By.xpath("//div[@id='box-most-popular1']//*[@alt='Purple Duck']");
+    //public By purpleDuck1 = By.xpath("//div[@id='box-most-popular1']//*[@alt='Purple Duck']");
+
+    private final By logotypeLocator = By.id("logotype-wrapper");
+    private final By searchBoxLocator = By.xpath("//input[@name='query']");
+    private final By rubberDucksCatLocator = By.xpath("//*[@id='site-menu-wrapper']//a[text()='Rubber Ducks']");
+    private final By subCategoryLocator = By.xpath("//*[@class='category-2']//*[text()='Subcategory']");
+    private final By logoutBtnLocator = By.xpath("//div[@class='content']//*[text()='Logout']");
+    private final By customerServiceLocator = By.xpath("//div[@class='content']//*[text()='Customer Service']");
+    private final By titleAcmeLocator = By.xpath("//*[@title='ACME Corp.']");
+
+    public WebElement searchBox(){
+        return driver.findElement(searchBoxLocator);
+    }
+    public WebElement productCat(){
+        return driver.findElement(rubberDucksCatLocator);
+    }
+    public WebElement subCategory(){
+        return driver.findElement(subCategoryLocator);
+    }
+
+    public WebElement logoutBtn(){
+        return driver.findElement(logoutBtnLocator);
+    }
+    public WebElement customerService(){
+        return driver.findElement(customerServiceLocator);
+    }
+    public WebElement titleAcme(){
+        return driver.findElement(titleAcmeLocator);
+    }
 
     public SecuredPage(WebDriver driver, LoadableComponent<?> parent, String username, String password) {
 
@@ -37,9 +63,20 @@ public class SecuredPage extends LoadableComponent<SecuredPage> {
 
     public WebElement accountTitle() { return driver.findElement(accountTitle);}
 
-    public WebElement duck1() {
-        return  driver.findElement(purpleDuck1);
-    };
+    public void searchProduct(String productValue){
+        searchBox().sendKeys(productValue, Keys.ENTER);
+    }
+    public void productCatBtn(){
+        actions.moveToElement(productCat()).click(subCategory());
+
+    }
+    public void customer(){
+        customerService().click();
+    }
+    public void logout(){
+        actions.moveToElement(logoutBtn()).click();
+    }
+
 
     @Override
     protected void load() {
